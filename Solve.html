@@ -85,34 +85,18 @@
                 <div class="row align-items-center" data-aos="fade-up">
                     <div class="col-lg-4 mr-auto" data-aos="fade-up">
                         <div class="col">
-                            <input class="form-control blankfield kfield" id="fieldk" placeholder="Enter 0" />
+                            <input class="form-control blankfield kfield" id="field" placeholder="Enter values seperated by a comma." />
                         </div>
-                        <div class="col">
-                            <input class="form-control blankfield" id="field1" placeholder="A value would be cool" />
-                        </div>
-                        <div class="col">
-                            <input class="form-control blankfield" id="field2" placeholder="If you are up for another!" />
-                        </div>
-                        <div class="col">
-                            <input class="form-control blankfield" id="field3" placeholder="Thank you for your cooperation" />
-                        </div>
-                        <div class="col">
-                            <input class="form-control blankfield" id="field4" placeholder="Just do it already" />
-                        </div>
-                        <div class="col">
-                            <input class="form-control blankfield" id="field5" placeholder="I was here first." />
-                        </div>
-
-
-
                     </div>
-                    <button id="execute" class="btn btn-outline-light    py-2 px-4" style="color: #fff;">Give me the answer stupid robot</button>
+                    <button id="execute" class="btn btn-outline-light  py-3 px-5" style="color: #fff;">Run the numbers</button>
 
 
                     <div class="col-lg-2 ml-auto" data-aos="fade-up" data-aos-delay="100">
                         <div id="output" style="color:#fff;">
+                            <hr />
                             <h1><p style="color:#fff;" id="title"></p></h1>
-                            <p style="color:#fff; " id="sub">  </p>
+                            <p style="color:#fff; "    id="sub"></p>
+                            <hr />
 
                         </div>
                     </div>
@@ -158,12 +142,7 @@
         $("#execute").on("click", function () {
 
             // Get the user data
-            let valk = parseInt($("#field0").val());
-            let val1 = parseInt($("#field1").val());
-            let val2 = parseInt($("#field2").val());
-            let val3 = parseInt($("#field3").val());
-            let val4 = parseInt($("#field4").val());
-            let val5 = parseInt($("#field5").val());
+            let valk = parseInt($("#field").val());
 
             // Create an array with the user info
             let array = new Array();
@@ -187,7 +166,7 @@
                 let solution = valk - array[index];
 
                 if (array.indexOf(solution, index + 1) > -1) {
-                    title = "Congratulations!";
+                    title = "Congratulations✔";
                     message = `A solution was found for a K value of ${valk} .`;
                     break;
                 }

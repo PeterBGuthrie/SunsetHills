@@ -121,6 +121,7 @@
     <Content Include="css\mediaelementplayer.css" />
     <Content Include="css\owl.carousel.min.css" />
     <Content Include="css\owl.theme.default.min.css" />
+    <Content Include="css\solveCodeStyle.css" />
     <Content Include="css\style.css" />
     <Content Include="favicon\favicon.ico" />
     <Content Include="fonts\flaticon\backup.txt" />
