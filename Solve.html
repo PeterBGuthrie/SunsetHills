@@ -140,52 +140,63 @@
     <script>
 
         $("#execute").on("click", function () {
+            var buildings = [];
 
-            // Get the user data
-            let valk = parseInt($("#field").val());
+            var seeSunSet = [];
+            var lastHeight, highest;
 
-            // Create an array with the user info
-            let array = new Array();
-            array.push(val1);
-            array.push(val2);
-            array.push(val3);
-            array.push(val4);
-            array.push(val5);
-            array.push(val0);
-
-            //Step 3: Perform the algo
-
-            let message = "";
-
-            //for (number in array) {
-            for (let index = 0; index < array.length - 1; index++) {
-                if (array[index] > valk)
-                    continue;
-
-
-                let solution = valk - array[index];
-
-                if (array.indexOf(solution, index + 1) > -1) {
-                    title = "Congratulations✔";
-                    message = `A solution was found for a K value of ${valk} .`;
-                    break;
-                }
-                else {
-                    title = "Unfortunately";
-                    message = `No solution for a K value of ${valk} was found.`;
-                }
-
-
+            /*var Num1SS = Number($("#num1SS").val());*/
+            $("#sub").html("");
+            var Str = $("#field").val();
+            if (Str[Str.length - 1] == ",") {
+                /*alert("end with number");*/
+                Str.trim();
+                $("#field").val("");
 
             }
+            var Res = Str.split(",");
 
-            // Print result to user
-            $("#title").text(title);
-            $("#sub").text(message);
 
-            // Clear blanks
-            $("#fieldk, #field1, #field2, #field3, #field4, #field5").val("");
+            for (var u = 0; u < Res.length; u++) {
+                buildings.push(Number(Res[u]));
+                console.log(Res.toString());
+            }
+            var errorMsg = "";
+            var validSS = true;
+            for (var v = 0; v < buildings.length; v++) {
+                if (isNaN(buildings[v])) {
+                    validSS = false;
+                }
+            }
+            if (!validSS) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'entries must be numbers!',
+                    footer: 'Why do I have this issue?'
+                });
+                return;
+            }
+            for (var b = 0; b < buildings.length; b++) {
+                if (b == 0) {
+                    seeSunSet.push(buildings[b]);
+                    lastHeight = buildings[b];
+                    highest = buildings[b];
+                }
+                else {
+                    if (buildings[b] > lastHeight) {
+                        lastHeight = buildings[b];
+                        if (buildings[b] > highest) {
+                            seeSunSet.push(buildings[b]);
 
+                            highest = buildings[b];
+                        }
+
+                    }
+                }
+            }
+            $("sub").html(`The buildings that can
+            see the sun set are ${seeSunSet.toString()}.`);
         });
 
     </script>
