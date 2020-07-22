@@ -88,38 +88,35 @@
                 <div class="row align-items-center">
                     <div class="col-lg-12 mr-auto" data-aos="fade-up">
                         <pre>
-                            <code class="language-javascript line-numbers">$("#execute").on("click", function () {
-
-// Create var for output
-var message = "";
+<code class="language-javascript line-numbers">$("#execute").on("click", function () {
 
 // Grab user data
-var inputArray = new Array();
-inputArray.push(Number($("blank1").val()));
-inputArray.push(Number($("blank2").val()));
-inputArray.push(Number($("blank3").val()));
-inputArray.push(Number($("blank4").val()));
-inputArray.push(Number($("blank5").val()));
+var inputArray = [
+Number($("#blank1").val()),
+Number($("#blank2").val()),
+Number($("#blank3").val()),
+Number($("#blank4").val()),
+Number($("#blank5").val()),
+]
 
+// Prepare arrays fo4 processing
 var largestvalue = inputArray[0];
 var tallest = [largestvalue];
 
 // Sort the array
 for (let loop = 1; loop < inputArray.length; loop++)
 {
-if (inputArray[loop] > largestvalue)
-{
-largestvalue = inputArray[loop];
-message = tallest.push(largestvalue);
-}
+   if (inputArray[loop] > largestvalue)
+   {
+      largestvalue = inputArray[loop];
+      tallest.push(largestvalue);
+   }
 }
 
 // Print results to the user
-
-//$("sub").html(`Just please work: ${tallest}.`)
-$("#sub").text(message);
-
-
+$("#title").text("The Numbers");
+$("#sub").html(`The buildings of ${tallest} have a view of the sunset.`)
+$("#blank1, #blank2, #blank3, #blank4, #blank5").val("");
 });</code>
                         </pre>
                     </div>

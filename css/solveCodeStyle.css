@@ -1225,5 +1225,5 @@ h1, h2, h3, h4, h5,
 }
 
 #execute:hover {
-    color: #660019;
+    color: #660019 !important;
 }
