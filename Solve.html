@@ -85,7 +85,11 @@
                 <div class="row align-items-center" data-aos="fade-up">
                     <div class="col-lg-4 mr-auto" data-aos="fade-up">
                         <div class="col">
-                            <input class="form-control blankfield kfield" id="field" placeholder="Enter values seperated by a comma." />
+                            <input id="blank1" type="number" class="form-control text-center " placeholder="Please enter a value in each blank." />
+                            <input id="blank2" type="number" class="form-control text-center " placeholder="..."/>
+                            <input id="blank3" type="number" class="form-control text-center " placeholder="..."/>
+                            <input id="blank4" type="number" class="form-control text-center " placeholder="..."/>
+                            <input id="blank5" type="number" class="form-control text-center " placeholder="..."/>
                         </div>
                     </div>
                     <button id="execute" class="btn btn-outline-light  py-3 px-5" style="color: #fff;">Run the numbers</button>
@@ -94,8 +98,8 @@
                     <div class="col-lg-2 ml-auto" data-aos="fade-up" data-aos-delay="100">
                         <div id="output" style="color:#fff;">
                             <hr />
-                            <h1><p style="color:#fff;" id="title"></p></h1>
-                            <p style="color:#fff; "    id="sub"></p>
+                            <h1><p style="color:#fff;" id="title">title</p></h1>
+                            <p style="color:#fff; "    id="sub">sub</p>
                             <hr />
 
                         </div>
@@ -140,63 +144,37 @@
     <script>
 
         $("#execute").on("click", function () {
-            var buildings = [];
 
-            var seeSunSet = [];
-            var lastHeight, highest;
+            // Create var for output
+            var message = "";
 
-            /*var Num1SS = Number($("#num1SS").val());*/
-            $("#sub").html("");
-            var Str = $("#field").val();
-            if (Str[Str.length - 1] == ",") {
-                /*alert("end with number");*/
-                Str.trim();
-                $("#field").val("");
+            // Grab user data
+            var inputArray = new Array();
+            inputArray.push(Number($("blank1").val()));
+            inputArray.push(Number($("blank2").val()));
+            inputArray.push(Number($("blank3").val()));
+            inputArray.push(Number($("blank4").val()));
+            inputArray.push(Number($("blank5").val()));
 
-            }
-            var Res = Str.split(",");
+            var largestvalue = inputArray[0];
+            var tallest = [largestvalue];
+
+            // Sort the array
+            for (let loop = 1; loop < inputArray.length; loop++)
+               {
+                if (inputArray[loop] > largestvalue)
+                   {
+                    largestvalue = inputArray[loop];
+                     message = tallest.push(largestvalue);
+                   }
+               }
+
+            // Print results to the user
+
+            //$("sub").html(`Just please work: ${tallest}.`)
+            $("#sub").text(message);
 
 
-            for (var u = 0; u < Res.length; u++) {
-                buildings.push(Number(Res[u]));
-                console.log(Res.toString());
-            }
-            var errorMsg = "";
-            var validSS = true;
-            for (var v = 0; v < buildings.length; v++) {
-                if (isNaN(buildings[v])) {
-                    validSS = false;
-                }
-            }
-            if (!validSS) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'entries must be numbers!',
-                    footer: 'Why do I have this issue?'
-                });
-                return;
-            }
-            for (var b = 0; b < buildings.length; b++) {
-                if (b == 0) {
-                    seeSunSet.push(buildings[b]);
-                    lastHeight = buildings[b];
-                    highest = buildings[b];
-                }
-                else {
-                    if (buildings[b] > lastHeight) {
-                        lastHeight = buildings[b];
-                        if (buildings[b] > highest) {
-                            seeSunSet.push(buildings[b]);
-
-                            highest = buildings[b];
-                        }
-
-                    }
-                }
-            }
-            $("sub").html(`The buildings that can
-            see the sun set are ${seeSunSet.toString()}.`);
         });
 
     </script>
