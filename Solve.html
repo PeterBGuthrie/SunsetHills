@@ -157,8 +157,9 @@
                 Number($("#blank5").val()),
             ]
 
+            let nofinputs    = inputArray.length
             var largestvalue = inputArray[0];
-            var tallest = [largestvalue];
+            var tallest      = [largestvalue];
 
             // Sort the array
             for (let loop = 1; loop < inputArray.length; loop++)
@@ -166,15 +167,21 @@
                 if (inputArray[loop] > largestvalue)
                    {
                     largestvalue = inputArray[loop];
-                     tallest.push(largestvalue);
+                    tallest.push(largestvalue);
                    }
-               }
+            }
 
-            // Print results to the user
-            $("#title").text("The Numbers");
-            $("#sub").html(`The buildings of ${tallest} have a view of the sunset.`)
-            $("#blank1, #blank2, #blank3, #blank4, #blank5").val("");
-
+             // Print results to the user
+            if (nofinputs < 5) {
+                $("#title").text("Attention");
+                $("#sub").text("Please fill in all five blanks.");
+            }
+            else
+            {
+                $("#title").text("The Numbers");
+                $("#sub").html(`The buildings of ${tallest} have a view of the sunset.`)
+                $("#blank1, #blank2, #blank3, #blank4, #blank5").val("");
+            }
 
         });
 
