@@ -149,12 +149,14 @@
             var message = "";
 
             // Grab user data
-            var inputArray = new Array();
-            inputArray.push(Number($("blank1").val()));
-            inputArray.push(Number($("blank2").val()));
-            inputArray.push(Number($("blank3").val()));
-            inputArray.push(Number($("blank4").val()));
-            inputArray.push(Number($("blank5").val()));
+            var inputArray = [
+                Number($("#blank1").val()),
+                Number($("#blank2").val()),
+                Number($("#blank3").val()),
+                Number($("#blank4").val()),
+                Number($("#blank5").val()),
+            ]
+
 
             var largestvalue = inputArray[0];
             var tallest = [largestvalue];
@@ -165,14 +167,13 @@
                 if (inputArray[loop] > largestvalue)
                    {
                     largestvalue = inputArray[loop];
-                     message = tallest.push(largestvalue);
+                     tallest.push(largestvalue);
                    }
                }
 
             // Print results to the user
-
-            //$("sub").html(`Just please work: ${tallest}.`)
-            $("#sub").text(message);
+            $("#title").text("The Numbers");
+            $("#sub").html(`The buildings of ${tallest} have a view of the sunset.`)
 
 
         });
