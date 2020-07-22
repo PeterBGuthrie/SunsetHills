@@ -1223,3 +1223,7 @@ h1, h2, h3, h4, h5,
 #home-section {
     background-color: #660019 !important;
 }
+
+#execute:hover {
+    color: #660019;
+}
