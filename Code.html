@@ -88,7 +88,39 @@
                 <div class="row align-items-center">
                     <div class="col-lg-12 mr-auto" data-aos="fade-up">
                         <pre>
-<code class="language-javascript line-numbers">Hello world</code>
+                            <code class="language-javascript line-numbers">$("#execute").on("click", function () {
+
+// Create var for output
+var message = "";
+
+// Grab user data
+var inputArray = new Array();
+inputArray.push(Number($("blank1").val()));
+inputArray.push(Number($("blank2").val()));
+inputArray.push(Number($("blank3").val()));
+inputArray.push(Number($("blank4").val()));
+inputArray.push(Number($("blank5").val()));
+
+var largestvalue = inputArray[0];
+var tallest = [largestvalue];
+
+// Sort the array
+for (let loop = 1; loop < inputArray.length; loop++)
+{
+if (inputArray[loop] > largestvalue)
+{
+largestvalue = inputArray[loop];
+message = tallest.push(largestvalue);
+}
+}
+
+// Print results to the user
+
+//$("sub").html(`Just please work: ${tallest}.`)
+$("#sub").text(message);
+
+
+});</code>
                         </pre>
                     </div>
                 </div>
